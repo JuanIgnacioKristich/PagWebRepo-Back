@@ -1,6 +1,5 @@
 import express from 'express';
-
-
+// import { check, validationResult } from 'express-validator';
 
 interface productoYmercancia{
 
@@ -14,18 +13,18 @@ interface productoYmercancia{
 
 let productos: productoYmercancia[]  =[
  {
-   nombre:"",
-   modelo:"",
+   nombre:"calc",
+   modelo:"ford",
    precios: 1500 ,
-   paisOrigen:""
+   paisOrigen:"Alemania"
   
 
 },
 {
   nombre:"",
-  modelo:"",
+  modelo:"nissan",
   precios:6,
-  paisOrigen:""
+  paisOrigen:"Argentina"
  
 
 },
@@ -52,7 +51,6 @@ const router = express.Router();
 
 router.get('/productos', (_, res) => {
   res.json(productos);
-  console.log(productos)
 });
 
 
@@ -63,7 +61,7 @@ router.get('/productos/precios/:precios', (req, res) => {
 });
 
 
-router.put('/productos/:modelo', (req, res) => {
+router.put('/productos/modelo/:modelo', (req, res) => {
   const { modelo } = req.params;
   const { nombre, precios, paisOrigen } = req.body;
   const index = productos.findIndex((producto) => producto.modelo === modelo);
@@ -77,29 +75,47 @@ router.put('/productos/:modelo', (req, res) => {
     res.status(404).json({ message: 'Producto no encontrado' });
   }
 });
-// router.get('/productos/precio/:precio', (req, res) => {
-//   const { precio } = req.params;
-//   const filteredProductos = productos.filter((producto) => producto.precio === Number(precio));
-//   res.json(filteredProductos);
-// });
 
-// router.get('/productos/pais/:paisOrigen', (req, res) => {
-//   const { paisOrigen } = req.params;
-//   const filteredProductos = productos.filter((producto) => producto.paisOrigen === paisOrigen);
-//   res.json(filteredProductos);
-// });
+router.get('/productos/pais/:paisOrigen', (req, res) => {
+  const { paisOrigen } = req.params;
+  const filteredProductos = productos.filter((producto) => producto.paisOrigen === paisOrigen);
+  res.json(filteredProductos);
+});
 
-// router.post('/productos', (req, res) => {
-//   const { nombre, precio, modelo, paisOrigen } = req.body;
+router.post('/productos', (req, res) => {
+  const { nombre, precios, modelo, paisOrigen } = req.body;
   
-//   if (!nombre || !precio || !modelo || !paisOrigen) {
-//     return res.status(400).json({ message: 'Faltan campos obligatorios' });
-//   }
+  if (!nombre || !precios || !modelo || !paisOrigen) {
+    return res.status(400).json({ message: 'Faltan campos obligatorios' });
+  }
 
-//   productos.push({ nombre, precio, modelo, paisOrigen });
+  productos.push({ nombre, precios, modelo, paisOrigen });
   
-//   return res.json(productos[productos.length -1]);
-// });
+  return res.json(productos[productos.length -1]);
+});
+
+
+router.delete('/productos/delete/:nombre', (req, res) => {
+  const nombre = req.params.nombre;
+  productos = productos.filter(producto => producto.nombre !== nombre);
+  res.send(`Producto ${nombre} eliminado.`);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 export default router;
