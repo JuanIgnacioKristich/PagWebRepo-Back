@@ -1,8 +1,10 @@
 import { DataSource } from "typeorm"
 import { Products } from './Products';
 import {Users} from "./Users"
+import {Carts} from "./Carts"
 
-const AppDataSource = new DataSource({
+
+export const AppDataSource = new DataSource({
     type: "mysql",
     host: "localhost",
     port: 3306,

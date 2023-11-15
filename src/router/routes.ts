@@ -1,12 +1,12 @@
 import express from 'express';
-import {getProducts, getProductsbyprice} from "../controlers/controles"
+import {getAll, getProducts, getProductsbyprice} from "../controlers/controles"
 // import { check, validationResult } from 'express-validator';
 
 
 
 const router = express.Router();
 
-router.get('/productos', getProducts);
+router.get('/productos', getAll, getProducts);
 
 router.get('/productos/precios/:precios', getProductsbyprice);
 
@@ -31,17 +31,7 @@ router.get('/productos/precios/:precios', getProductsbyprice);
 //   res.json(filteredProductos);
 // });
 
-// router.post('/productos', (req, res) => {
-//   const { nombre, precios, modelo, paisOrigen } = req.body;
-  
-//   if (!nombre || !precios || !modelo || !paisOrigen) {
-//     return res.status(400).json({ message: 'Faltan campos obligatorios' });
-//   }
 
-//   productos.push({ nombre, precios, modelo, paisOrigen });
-  
-//   return res.json(productos[productos.length -1]);
-// });
 
 
 // router.delete('/productos/delete/:nombre', (req, res) => {

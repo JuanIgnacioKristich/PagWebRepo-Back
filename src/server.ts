@@ -1,6 +1,7 @@
 // Importar el módulo Express
 import express from "express";
 import router from "./router/routes";
+import "reflect-metadata"
 // Crear una nueva aplicación Express
 const app = express();
 const port = 8080

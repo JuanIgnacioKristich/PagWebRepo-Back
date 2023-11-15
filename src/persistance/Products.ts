@@ -3,16 +3,19 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
 @Entity()
 export class Products {
     @PrimaryGeneratedColumn()
-    id: number
+    id!: number
 
     @Column()
-    firstName: string
+    firstName!: string
 
     @Column()
-    lastName: string
+    Price!: string
 
     @Column()
-    isActive: boolean
+    Descripcion!: string
+
+    @Column()
+    isActive?: boolean
 }
 
 

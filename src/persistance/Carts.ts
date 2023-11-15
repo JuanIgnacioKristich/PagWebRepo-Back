@@ -1,7 +1,8 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
+
 @Entity()
-export class Users{
+export class Carts{
     @PrimaryGeneratedColumn()
     id!:number
 
@@ -9,17 +10,6 @@ export class Users{
     @Column()
     UserName!: string
 
-
-    @Column()
-    Password!: string
-
-
-    @Column()
-    Email!: string
-
-
-    @Column()
-    Address!: string
 
     
 
