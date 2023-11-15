@@ -14,3 +14,5 @@ export class Products {
     @Column()
     isActive: boolean
 }
+
+

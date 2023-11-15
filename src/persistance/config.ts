@@ -1,5 +1,6 @@
 import { DataSource } from "typeorm"
 import { Products } from './Products';
+import {Users} from "./Users"
 
 const AppDataSource = new DataSource({
     type: "mysql",

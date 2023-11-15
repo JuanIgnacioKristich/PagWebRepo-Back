@@ -3,7 +3,7 @@ import express from "express";
 import router from "./router/routes";
 // Crear una nueva aplicación Express
 const app = express();
-const port = 8082
+const port = 8080
 // Definir una ruta para el servidor
 app.use("/", router)
 
