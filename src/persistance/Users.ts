@@ -7,21 +7,28 @@ export class Users{
 
 
     @Column()
-    UserName!: string
+    UserName: string
 
 
     @Column()
-    Password!: string
+    Password: string
 
 
     @Column()
-    Email!: string
+    Email: string
 
 
     @Column()
-    Address!: string
+    Address: string
 
-    
+
+    constructor(UserName:string, Password:string, Email:string, Address:string){
+        this.UserName=UserName;
+        this.Password=Password;
+        this.Email=Email;
+        this.Address=Address;
+    }
 
 
 }
+

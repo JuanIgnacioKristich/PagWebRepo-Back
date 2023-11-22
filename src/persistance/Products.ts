@@ -6,16 +6,23 @@ export class Products {
     id!: number
 
     @Column()
-    firstName!: string
+    firstName: string
 
     @Column()
-    Price!: string
+    Price: string
 
     @Column()
-    Descripcion!: string
+    Descripcion: string
 
     @Column()
-    isActive?: boolean
+    isActive: boolean
+
+    constructor(firstName:string, Price:string, Descripcion:string, isActive: boolean){
+        this.firstName=firstName;
+        this.Price=Price;
+        this.Descripcion=Descripcion;
+        this.isActive=isActive;
+    }
 }
 
 
